@@ -7,10 +7,12 @@ const testInput = `1-3 a: abcde
 
 describe("day2", () => {
   test("testInput", () => {
-    const [got1, _] = day2(testInput);
+    const [got1, got2] = day2(testInput);
 
     const want1 = 2;
+    const want2 = 1;
 
     expect(got1).toBe(want1);
+    expect(got2).toBe(want2);
   });
 });
