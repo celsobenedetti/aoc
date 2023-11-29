@@ -2,35 +2,42 @@ import { describe, test, expect } from "vitest";
 import { day1 } from ".";
 
 describe("Day1", () => {
-  describe("Part1", () => {
-    test("testInput", () => {
-      const testTarget = 2020;
-      const testInput = [1721, 979, 366, 299, 675, 1456];
+  test("testInput", () => {
+    const testTarget = 2020;
 
-      const want = 514579;
-      const got = day1(testInput, testTarget);
+    const testInput = `1721
+    979
+    366
+    299
+    675
+    1456`;
 
-      expect(got).toBe(want);
-    });
+    const want1 = 514579;
+    const want2 = 241861950;
 
-    test("mockInput", () => {
-      const testTarget = 3000;
-      const testInput = [1721, 979, 366, 299, 1, 2999];
+    const [got1, got2] = day1(testInput, testTarget);
 
-      const want = 2999;
-      const got = day1(testInput, testTarget);
+    expect(got1).toBe(want1);
+    expect(got2).toBe(want2);
+  });
 
-      expect(got).toBe(want);
-    });
+  test("invalid input", () => {
+    const testTarget = 3000;
+    const testInput = `1
+        2
+        3
+        4
+        979
+        366
+        299
+        69420`;
 
-    test("invalid input", () => {
-      const testTarget = 3000;
-      const testInput = [1, 2, 3, 4, 979, 366, 299, 69420];
+    const want1 = -1; // not found
+    const want2 = -1; // not found
 
-      const want = -1; // not found
-      const got = day1(testInput, testTarget);
+    const [got1, got2] = day1(testInput, testTarget);
 
-      expect(got).toBe(want);
-    });
+    expect(got1).toBe(want1);
+    expect(got2).toBe(want2);
   });
 });
