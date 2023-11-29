@@ -32,17 +32,31 @@ function parseInput(input: string): TreeGrid {
 }
 
 function part1(input: TreeGrid): number {
-  let trees = 0;
-
-  let j = 3;
-  for (let i = 1; i < input.length; i++) {
-    if (input[i][j]) trees++;
-
-    j = (j + 3) % input[i].length;
-  }
-  return trees;
+  return findsTreeInSlope(input, 3, 1);
 }
 
 function part2(input: TreeGrid): number {
-  return -1;
+  return (
+    findsTreeInSlope(input, 1, 1) *
+    findsTreeInSlope(input, 3, 1) *
+    findsTreeInSlope(input, 5, 1) *
+    findsTreeInSlope(input, 7, 1) *
+    findsTreeInSlope(input, 1, 2)
+  );
+}
+
+function findsTreeInSlope(
+  input: TreeGrid,
+  slopeX: number,
+  slopeY: number,
+): number {
+  let trees = 0;
+
+  let j = slopeX;
+  for (let i = slopeY; i < input.length; i += slopeY) {
+    if (input[i][j]) trees++;
+
+    j = (j + slopeX) % input[i].length;
+  }
+  return trees;
 }

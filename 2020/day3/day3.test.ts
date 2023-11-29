@@ -16,7 +16,7 @@ const testInput = `..##.......
 describe("Day3", () => {
   test("testInput", () => {
     const want1 = 7;
-    const want2 = -1;
+    const want2 = 336;
 
     const [got1, got2] = day3(testInput);
 
