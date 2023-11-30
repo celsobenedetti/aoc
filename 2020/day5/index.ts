@@ -35,7 +35,7 @@ const UNIQUE_SEAT_MULTIPLIER = 8;
 
 export function day5(input: string): [number, number] {
   const passes = parseInput(input);
-  return [part1(passes), -1];
+  return [part1(passes), part2(passes)];
 }
 
 export function parseInput(input: string): BoardingPass[] {
@@ -90,4 +90,13 @@ function processPassID(boardingPass: BoardingPass): number {
 
 function part1(passes: BoardingPass[]): number {
   return Math.max(...passes.map(processPassID));
+}
+
+function part2(passes: BoardingPass[]): number {
+  return (
+    (passes
+      .map(processPassID)
+      .sort((a, b) => a - b)
+      .find((_, i, ids) => ids[i] + 1 != ids[i + 1]) || -1) + 1
+  );
 }

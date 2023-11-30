@@ -6,7 +6,7 @@ describe("Day5", () => {
     const input = "FBFBBFFRLR";
 
     const want1 = 357;
-    const want2 = -1;
+    const want2 = 358;
 
     const [got1, got2] = day5(input);
 
@@ -18,7 +18,7 @@ describe("Day5", () => {
     const input = "BFFFBBFRRR";
 
     const want1 = 567;
-    const want2 = -1;
+    const want2 = 568;
 
     const [got1, got2] = day5(input);
 
@@ -30,7 +30,7 @@ describe("Day5", () => {
     const input = "FFFBBBFRRR";
 
     const want1 = 119;
-    const want2 = -1;
+    const want2 = 120;
 
     const [got1, got2] = day5(input);
 
@@ -42,7 +42,7 @@ describe("Day5", () => {
     const input = "BBFFBBFRLL";
 
     const want1 = 820;
-    const want2 = -1;
+    const want2 = 821;
 
     const [got1, got2] = day5(input);
 
