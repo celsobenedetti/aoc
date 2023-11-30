@@ -4,11 +4,13 @@ import { day1 } from "./day1";
 import { day2 } from "./day2";
 import { day3 } from "./day3";
 import { day4 } from "./day4";
+import { day5 } from "./day5";
 
 const [d1_1, d1_2] = day1(readFileToStr("./day1/input.txt"), 2020);
 const [d2_1, d2_2] = day2(readFileToStr("./day2/input.txt"));
 const [d3_1, d3_2] = day3(readFileToStr("./day3/input.txt"));
 const [d4_1, d4_2] = day4(readFileToStr("./day4/input.txt"));
+const [d5_1, d5_2] = day5(readFileToStr("./day5/input.txt"));
 
 console.log({
   day: 1,
@@ -32,4 +34,10 @@ console.log({
   day: 4,
   part1: d4_1,
   part2: d4_2,
+});
+
+console.log({
+  day: 5,
+  part1: d5_1,
+  part2: d5_2,
 });
