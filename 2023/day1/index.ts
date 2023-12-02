@@ -1,4 +1,4 @@
-export function day1(input: string): { day: number; p1: number; p2: number } {
+export function day1(input: string) {
   return {
     day: 1,
     p1: part1(input),
