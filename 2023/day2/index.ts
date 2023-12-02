@@ -50,7 +50,7 @@ function part2(input: string): number {
         .map((line) => {
             const [_, subgames] = line.split(":");
 
-            const maxColorsFound = new Map([
+            const found = new Map([
                 [RED, 0],
                 [GREEN, 0],
                 [BLUE, 0],
@@ -60,20 +60,18 @@ function part2(input: string): number {
                 for (const cube of subgame.split(",").map((s) => s.trim())) {
                     const [quantity, color] = cube.split(" ");
 
-                    const max = maxColorsFound.get(color);
+                    const max = found.get(color);
 
                     if (max == undefined)
                         throw new Error(`Error trying to get color ${color}`);
 
                     if (+quantity > max) {
-                        maxColorsFound.set(color, +quantity);
+                        found.set(color, +quantity);
                     }
                 }
             }
 
-            return [...maxColorsFound]
-                .map(([_, quantity]) => quantity)
-                .reduce((product, n) => product * n, 1);
+            return [...found.values()].reduce((product, n) => product * n, 1);
         })
         .reduce((sum, id) => sum + id, 0);
 }
