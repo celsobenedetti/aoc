@@ -1,47 +1,52 @@
 export function day1(input: string): { day: number; p1: number; p2: number } {
-  const lines = input.split("\n").filter((l) => !!l.length);
-
   return {
     day: 1,
-    p1: part1(lines),
-    p2: part2(lines),
+    p1: part1(input),
+    p2: part2(input),
   };
 }
 
-const DIGIT = /[0-9]/;
-const NON_DIGITS = /[^0-9]/g;
+const DIGIT = /\d/g;
 
-const numbers = {
-  one: "1",
-  two: "2",
-  three: "3",
-  four: "4",
-  five: "5",
-  six: "6",
-  seven: "7",
-  eight: "8",
-  nine: "9",
-  zero: "0",
-};
+const numbers = new Map([
+  ["one", "1"],
+  ["two", "2"],
+  ["three", "3"],
+  ["four", "4"],
+  ["five", "5"],
+  ["six", "6"],
+  ["seven", "7"],
+  ["eight", "8"],
+  ["nine", "9"],
+  ["zero", "0"],
+]);
 
-export function part1(lines: string[]): number {
-  return lines.reduce((sum, line) => {
-    const digits = line.replace(NON_DIGITS, "");
-    const first = digits.at(0);
-    const last = digits.at(-1);
-    if (!first || !last) throw new Error(`Invalid input line ${line}`);
+export function part1(input: string): number {
+  const toOnlyDigits = (s: string) => s.match(DIGIT)?.toString() || "";
 
-    return sum + +(first + last);
-  }, 0);
+  return input
+    .split("\n")
+    .map(toOnlyDigits)
+    .filter((l) => !!l.length)
+    .reduce((sum, line) => {
+      const first = line.at(0);
+      const last = line.at(-1);
+      if (!first || !last) throw new Error(`Invalid input line ${line}`);
+
+      return sum + +(first + last);
+    }, 0);
 }
 
-export function part2(lines: string[]): number {
-  return lines.reduce((sum, line) => {
-    const first = findFirstDigit(line);
-    const last = findLastDigit(line);
+export function part2(input: string): number {
+  return input
+    .split("\n")
+    .filter((l) => !!l.length)
+    .reduce((sum, line) => {
+      const first = findFirstDigit(line);
+      const last = findLastDigit(line);
 
-    return sum + +(first + last);
-  }, 0);
+      return sum + +(first + last);
+    }, 0);
 }
 
 export function findFirstDigit(line: string) {
@@ -57,7 +62,7 @@ export function findFirstDigit(line: string) {
       }
 
       builder += line[j];
-      for (const [number, n] of Object.entries(numbers)) {
+      for (const [number, n] of [...numbers]) {
         if (builder.includes(number)) {
           return n;
         }
@@ -81,7 +86,7 @@ export function findLastDigit(line: string) {
       }
 
       builder = line[j] + builder;
-      for (const [number, n] of Object.entries(numbers)) {
+      for (const [number, n] of [...numbers]) {
         if (builder.includes(number)) {
           return n;
         }

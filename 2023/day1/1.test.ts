@@ -8,7 +8,7 @@ describe("day1", () => {
 
     const want = 142;
 
-    const p1 = part1(input.split("\n").filter((l) => !!l.length));
+    const p1 = part1(input);
 
     expect(p1).toBe(want);
   });
@@ -16,7 +16,7 @@ describe("day1", () => {
   test("Part2", () => {
     const input = readFileToStr("day1/test2.input.txt");
     const want = 281;
-    const p2 = part2(input.split("\n").filter((l) => !!l.length));
+    const p2 = part2(input);
 
     expect(p2).toBe(want);
   });
