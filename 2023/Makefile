@@ -6,3 +6,6 @@ main: build
 
 dev: build
 	@./aoc-2023 --dev
+
+test:
+	go test ./...
