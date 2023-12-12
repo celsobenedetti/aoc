@@ -27,14 +27,17 @@ soil-to-fertilizer map:
 	is.Equal(seeds, wantSeeds) // seeds got != want
 }
 
-func TestPart1(t *testing.T) {
+func TestDay5(t *testing.T) {
 	is := is.New(t)
 
 	input, err := os.ReadFile("./test.input.txt")
 	is.NoErr(err) // error reading input
 
-	got := part1(string(input))
-	want := 35
+	p1, p2, _ := Run(string(input))
 
-	is.Equal(got, want) // expected 35
+	want1 := 35
+	want2 := 46
+
+	is.Equal(p1, want1) // part1
+	is.Equal(p2, want2) // part2
 }

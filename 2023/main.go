@@ -6,15 +6,17 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"github.com/celsobenedetti/aoc/2023/day5"
 )
 
 type (
-	SolutionFn = func(string) (p1, p2 int)
+	SolutionFn = func(string) (p1, p2 int, d time.Duration)
 	Solution   struct {
-		Part1 int `json:"p1"`
-		Part2 int `json:"p2"`
+		Part1 int    `json:"p1"`
+		Part2 int    `json:"p2"`
+		Time  string `json:"time"`
 	}
 )
 
@@ -54,11 +56,12 @@ func run() map[int]Solution {
 			continue
 		}
 
-		p1, p2 := solution(input)
+		p1, p2, d := solution(input)
 
 		results[day] = Solution{
 			Part1: p1,
 			Part2: p2,
+			Time:  d.String(),
 		}
 	}
 	return results

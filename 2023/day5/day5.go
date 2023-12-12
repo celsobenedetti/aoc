@@ -2,6 +2,7 @@ package day5
 
 import (
 	"math"
+	"time"
 )
 
 type (
@@ -11,8 +12,11 @@ type (
 	}
 )
 
-func Run(in string) (p1, p2 int) {
-	return part1(in), part2(in)
+func Run(in string) (p1, p2 int, d time.Duration) {
+	start := time.Now()
+	p1 = part1(in)
+	p2 = part2(in)
+	return p1, p2, time.Since(start)
 }
 
 func part1(in string) int {
