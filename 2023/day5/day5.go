@@ -2,15 +2,14 @@ package day5
 
 import (
 	"math"
+	"slices"
 	"time"
 )
 
-type (
-	Layer    []MapTuple
-	MapTuple struct {
-		destination, origin, length int
-	}
-)
+type MapTuple struct {
+	destination, origin, length int
+}
+type Layer []MapTuple
 
 func Run(in string) (p1, p2 int, d time.Duration) {
 	start := time.Now()
@@ -41,13 +40,7 @@ func part1(in string) int {
 		}
 	}
 
-	min := math.MaxInt32
-	for _, seed := range seeds {
-		if min > seed {
-			min = seed
-		}
-	}
-	return min
+	return slices.Min(seeds)
 }
 
 func part2(in string) int {
